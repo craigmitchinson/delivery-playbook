@@ -1,0 +1,298 @@
+/* Tokens and fonts come from @ccs/ui (imported first in main.tsx). This file
+   holds the page chrome only; the slide itself is styled from theme.ts, so
+   every colour is a var(--c-*) reference or an alpha tint of the deck palette.
+   The app mirrors its light/dark mode onto <html data-theme>, so the vars
+   always resolve to the active variant. */
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--c-ink);
+  background: var(--c-panel-alt);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* --- Page shell: centres the fixed canvas, keeps the surroundings quiet ---- */
+.stage {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
+}
+
+/* Chrome and slide share the slide's on-screen width so everything lines up. */
+.stage__frame {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* The one control row: tabs on the left, every other control on the right.
+   Only the actions group wraps, so the tabs stay on the bottom line, flush with
+   the slide's left edge and merged into its top. */
+.stage__controls {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+}
+.stage__controls .spacer {
+  flex: 1 1 auto;
+}
+.stage__actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding-bottom: 2px;
+}
+
+.stage__actions--present {
+  padding: 6px 10px;
+  border-radius: var(--radius);
+}
+
+.stage__tabs {
+  display: flex;
+  gap: 3px;
+  flex: none;
+}
+.stage__tab {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  background: transparent;
+  color: var(--c-muted);
+  border: 1px solid transparent;
+  border-bottom: none;
+  border-radius: 9px 9px 0 0;
+  padding: 9px 12px;
+  cursor: pointer;
+}
+.stage__tab:hover {
+  color: var(--c-ink);
+}
+.stage__tab.is-active {
+  background: var(--paper-strong);
+  color: var(--c-ink);
+  box-shadow: 0 3px 0 0 var(--paper-strong);
+  font-weight: 700;
+}
+/* The active tab merges into the slide, so it matches the slide paper (the
+   suite bg in light; the deck's own deep teal in dark). */
+.stage {
+  --paper-strong: var(--c-bg);
+}
+.stage[data-mode='dark'] {
+  --paper-strong: #0c2329;
+}
+
+.stage__actions button {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  background: var(--c-ink);
+  color: var(--c-bg);
+  border: none;
+  border-radius: 7px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+.stage__actions button.ghost {
+  background: transparent;
+  color: var(--c-ink);
+  border: 1px solid var(--c-line);
+}
+.stage__actions button:hover {
+  opacity: 0.88;
+}
+.stage__actions button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* --- About this pack: glass popover ---------------------------------------- */
+.stage__about {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.about-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 40;
+  width: min(600px, 90vw);
+  padding: 18px 20px;
+  border-radius: var(--radius-lg);
+  font-family: var(--font-body);
+  color: var(--c-ink);
+  text-transform: none;
+  letter-spacing: 0;
+}
+.about-panel h2 {
+  margin: 0 0 8px;
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 700;
+}
+.about-panel p {
+  margin: 0 0 10px;
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+.about-panel ol {
+  margin: 0 0 10px;
+  padding-left: 20px;
+  font-size: 13.5px;
+  line-height: 1.55;
+}
+.about-panel li {
+  margin-bottom: 3px;
+}
+
+/* --- The fixed canvas ------------------------------------------------------ */
+/* Sized inline to the *scaled* canvas, while the slide inside keeps its authored
+   1920x1080 layout box and is scaled from its top-left corner. Any centring here
+   would offset the oversized child against the chrome above it, so this stays a
+   plain block: the slide's left edge then lines up with the tabs and the bar. */
+.stage__canvas {
+  display: block;
+  overflow: hidden;
+}
+.slide-frame {
+  flex: none;
+  transform-origin: top center;
+}
+
+/* --- Spotlight: lift one block above a scrim while telling the story -------
+   A scrim over the whole slide dims everything; the chosen block is raised
+   above it, so its own children come with it and nesting just works. */
+.stage[data-spotlight='true'] .slide-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: rgba(250, 247, 242, 0.8);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s var(--ease-out);
+}
+.stage[data-mode='dark'][data-spotlight='true'] .slide-frame::after {
+  background: rgba(10, 25, 28, 0.84);
+}
+.stage[data-spotlight='true'] .slide-frame.is-spotting::after {
+  opacity: 1;
+}
+.stage[data-spotlight='true'] .slide-frame [data-spot].is-spot {
+  position: relative;
+  z-index: 3;
+  box-shadow: 0 14px 40px rgba(11, 50, 57, 0.22);
+  border-radius: 12px;
+  transition:
+    box-shadow 0.3s var(--ease-out),
+    transform 0.3s var(--ease-out);
+}
+.stage[data-mode='dark'][data-spotlight='true'] .slide-frame [data-spot].is-spot {
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.6);
+}
+.stage[data-spotlight='true'] .slide-frame {
+  user-select: none;
+}
+.stage[data-spotlight='true'] .slide-frame [data-spot] {
+  cursor: pointer;
+}
+
+/* --- Comfort text: a dyslexia-friendly reading mode -------------------------
+   Swaps the serif display face for the sans body face, opens up line and word
+   spacing (per British Dyslexia Association guidance), and removes italics.
+   Letter tracking is left alone so the uppercase mono labels stay legible. */
+.stage[data-comfort='true'] .slide-frame {
+  --font-display: var(--font-body);
+}
+.stage[data-comfort='true'] .slide-frame * {
+  line-height: 1.5 !important;
+  word-spacing: 0.16em !important;
+  font-style: normal !important;
+}
+
+/* --- Play flow: the walkthrough animation ----------------------------------
+   The shared vocabulary for the "Play flow" walkthrough. App.tsx owns only the
+   driver — it publishes { playing, step } through the flow context and mirrors
+   it onto .stage as data-flow / data-flow-step. Each slide reads the context
+   with useFlow() and applies exactly these three classes to its own elements;
+   nothing here is set from inline styles, and App.tsx adds no DOM inside
+   .slide-frame, so the exported pixels are untouched.
+
+   The contract for slides:
+     .flow-dim    a step that is not the lit one — faded back
+     .flow-lit    the step currently being walked through
+     .flow-pulse  a one-shot nudge as a step becomes lit
+
+   When idle (step === -1) a slide applies none of them, so the resting slide is
+   byte-for-byte the slide that has always been exported. */
+.flow-dim {
+  opacity: 0.28;
+  transition: opacity 0.5s var(--ease-out);
+}
+.flow-lit {
+  opacity: 1;
+  transition: opacity 0.5s var(--ease-out);
+}
+.flow-pulse {
+  animation: flow-pulse 1.1s var(--ease-out);
+}
+@keyframes flow-pulse {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* A capture must never photograph a dimmed slide, however mid-flight it is. */
+.stage[data-exporting='true'] .flow-dim {
+  opacity: 1 !important;
+}
+
+/* Reduced motion: keep the focus, drop the movement. The dim/lit change still
+   happens, but instantly, and the pulse does not run at all. */
+@media (prefers-reduced-motion: reduce) {
+  .flow-dim,
+  .flow-lit {
+    transition: none;
+  }
+  .flow-pulse {
+    animation: none;
+  }
+}
+
+/* Print / capture: strip interactive chrome so a screenshot is clean. */
+@media print {
+  .stage__controls {
+    display: none !important;
+  }
+}
+
+/* Skip link (accessibility contract item 9). */
+.ccs-skip-link:focus {
+  z-index: 100;
+}
