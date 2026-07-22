@@ -285,9 +285,16 @@ body {
   }
 }
 
+/* The "Copy for Teams" control is live chrome, so keep it out of the static
+   PPTX capture and out of print. */
+.stage[data-exporting='true'] .copy-post {
+  display: none !important;
+}
+
 /* Print / capture: strip interactive chrome so a screenshot is clean. */
 @media print {
-  .stage__controls {
+  .stage__controls,
+  .copy-post {
     display: none !important;
   }
 }

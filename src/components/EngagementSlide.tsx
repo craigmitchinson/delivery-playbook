@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import {
   ENGAGEMENT_CHANNEL,
   ENGAGEMENT_OWNER,
@@ -5,6 +6,7 @@ import {
   ENGAGEMENT_SECTIONS,
   ENGAGEMENT_WHEN,
 } from '../data/playbook'
+import { copyPostToClipboard } from '../engagement-post'
 import { useFlow } from '../flow-context'
 import { slide, type as ty } from '../theme'
 import { useTheme } from '../theme-context'
@@ -53,6 +55,59 @@ function TemplateLine({ text, size = ty.meta }: { text: string; size?: number })
   )
 }
 
+/**
+ * Copies the pinned post to the clipboard for pasting into Teams. Carries the
+ * `copy-post` class so it is hidden during the PPTX capture (a live control has
+ * no place in a static slide image).
+ */
+function CopyPostButton() {
+  const t = useTheme()
+  const [copied, setCopied] = useState(false)
+
+  const onCopy = async () => {
+    const ok = await copyPostToClipboard()
+    if (!ok) return
+    setCopied(true)
+    window.setTimeout(() => setCopied(false), 1800)
+  }
+
+  return (
+    <button
+      className="copy-post"
+      onClick={onCopy}
+      title="Copy the pinned post to paste into Teams. The bracketed fields are filled in there."
+      style={{
+        flex: 'none',
+        display: 'inline-flex',
+        alignItems: 'center',
+        gap: 6,
+        fontFamily: 'var(--font-mono)',
+        fontSize: ty.chip,
+        letterSpacing: '0.04em',
+        textTransform: 'uppercase',
+        color: copied ? t.paper : t.roles.po.key,
+        background: copied ? t.roles.po.key : 'transparent',
+        border: `1px solid ${t.roles.po.key}`,
+        borderRadius: 7,
+        padding: '5px 11px',
+        cursor: 'pointer',
+      }}
+    >
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        {copied ? (
+          <path d="M4 12l5 5L20 6" />
+        ) : (
+          <>
+            <rect x="9" y="9" width="12" height="12" rx="2" />
+            <path d="M5 15V5a2 2 0 0 1 2-2h10" />
+          </>
+        )}
+      </svg>
+      {copied ? 'Copied for Teams' : 'Copy for Teams'}
+    </button>
+  )
+}
+
 export function EngagementSlide() {
   const t = useTheme()
   const { playing, step } = useFlow()
@@ -66,7 +121,7 @@ export function EngagementSlide() {
     <Slide
       kicker="Engagement"
       title="Engagement setup"
-      lead="The Teams channel and pinned post opened at intake, the template each section follows, and the standing rules for keeping it current."
+      lead="The Teams channel and pinned post opened at intake, and the standing rules for keeping it current. Use Copy for Teams to paste the post, then fill in the bracketed fields."
       legend={
         <Legend
           items={[
@@ -165,6 +220,7 @@ export function EngagementSlide() {
               />
               <TemplateLine text={ENGAGEMENT_CHANNEL} size={ty.body} />
               <span style={{ flex: 1 }} />
+              <CopyPostButton />
               <MicroLabel>Pinned post</MicroLabel>
             </div>
 
