@@ -289,7 +289,7 @@ export const MOMENTS: Moment[] = [
     owner: 'Engineering Lead',
     gate: 'CoE gate. SG2 build readiness against the charter and route-to-live material.',
     sg: 'SG2',
-    raci: { biz: 'R', po: 'C', el: 'A', eng: 'R', coe: 'C' },
+    raci: { biz: 'C', po: 'C', el: 'A', eng: 'R', coe: 'C' },
     comms: [
       {
         t: 'Progress & blockers',
@@ -368,7 +368,7 @@ export const MOMENTS: Moment[] = [
     owner: 'Engineering Lead',
     gate: 'CoE gate. SG3 test-to-live approval on evidenced results.',
     sg: 'SG3',
-    raci: { biz: 'R', po: 'C', el: 'A', eng: 'R', coe: 'C' },
+    raci: { biz: 'C', po: 'C', el: 'A', eng: 'R', coe: 'C' },
     comms: [
       {
         t: 'Coordinate UAT',
@@ -464,7 +464,7 @@ export const MOMENTS: Moment[] = [
     fov: 'First Occurrence Validation: each in-scope scenario is checked by a named validator the first time it runs live. Coverage is the measure rather than volume or elapsed time. FOV is complete when every in-scope scenario has had its first occurrence validated, its output reconciled and any variant logged and handled. The T-shirt size sets the expected scenario count. A scenario that fails validation returns the work to build.',
     hyper:
       'Hypercare applies to both routes and follows FOV. Unlike FOV it is a time-box: the window is keyed to the T-shirt size, from 3 working days at XS to 20 at XL. It closes when the solution has been stable for the full window, no P1 or P2 is open, Ops is trained on the runbook and benefit tracking is live.',
-    raci: { biz: 'R', po: 'R', el: 'A', eng: 'R', coe: 'C' },
+    raci: { biz: 'C', po: 'R', el: 'A', eng: 'R', coe: 'C' },
     comms: [
       {
         t: 'FOV scenario list',
