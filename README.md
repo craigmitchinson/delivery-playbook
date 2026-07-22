@@ -3,8 +3,9 @@
 Fixed-dimension (1920x1080, 16:9) slides for the delivery playbook, switched via tabs at the top.
 One delivery spine, two CoE routes (Intelligent Automation and Smart Automation), seven delivery
 moments with accountability, gates and comms visible at every step. React + Vite + TypeScript, no
-backend. Part of the CCS suite (hub on `http://localhost:5170`); this app runs on port **5180** and
-consumes the shared `@ccs/ui` tokens, fonts and glass chrome.
+backend. Part of the CCS suite (hub on `http://localhost:5170`); this app runs on port **5180**. It
+uses the shared `@ccs/ui` tokens, fonts and glass chrome, vendored into
+[src/vendor/ccs-ui/](src/vendor/ccs-ui/) so the repo is self-contained and clones anywhere.
 
 ## About this pack — the playbook skeleton
 
@@ -149,9 +150,10 @@ The internal layout is always authored at 1920x1080, so a capture of the `.slide
   non-negotiables and the cadence. Editing content there updates every slide — no component
   changes needed.
 - **Brand** ([src/theme.ts](src/theme.ts)): every colour, font and spacing token lives in one file
-  so the look cannot drift. The canonical source is `@ccs/ui` — wherever a value exists there this
-  file references `var(--c-*)` instead of a literal, so the suite stays in step. Fonts are the
-  shared self-hosted stacks (Fraunces/Gelasio, Inter/Carlito, JetBrains Mono).
+  so the look cannot drift. The canonical source is `@ccs/ui` (vendored under
+  [src/vendor/ccs-ui/](src/vendor/ccs-ui/)) — wherever a value exists there this file references
+  `var(--c-*)` instead of a literal, so the suite stays in step. Fonts are the shared self-hosted
+  stacks (Fraunces/Gelasio, Inter/Carlito, JetBrains Mono).
 - **Light and dark modes**: the token file ships a light and a dark variant of the same palette,
   supplied to the render layer through a small context
   ([src/theme-context.ts](src/theme-context.ts)). The toolbar toggle switches the slide and the

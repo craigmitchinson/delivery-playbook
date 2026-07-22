@@ -26,7 +26,7 @@ const BASIS: Partial<Record<RoleKey, string>> = {
  * on Engineers at the classification moment. Stated on the cell so the reason is
  * next to the value.
  */
-const ENG_CLASSIFICATION_NOTE = 'Consulted at classification, responsible again once the change re-enters delivery'
+const ENG_CLASSIFICATION_NOTE = 'Consulted now, responsible on re-entry'
 
 function RaciKey() {
   const t = useTheme()
