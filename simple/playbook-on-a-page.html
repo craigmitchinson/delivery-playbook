@@ -88,6 +88,10 @@ section { display: grid; gap: 20px; }
 .flow .gate-t { fill: var(--gate); font-family: var(--mono); font-size: 11px; font-weight: 500; }
 .flow .note { fill: var(--muted); font-size: 12px; }
 .flow .note-b { fill: var(--ink); font-size: 12px; font-weight: 700; }
+.flow .lane-l { fill: var(--muted); font-family: var(--mono); font-size: 10.5px; font-weight: 500; letter-spacing: 0.08em; }
+.flow .chip-b { fill: var(--panel); stroke: var(--line); }
+.flow .chip-p { fill: var(--surface); stroke: var(--soft); stroke-dasharray: 3 2; }
+.flow .chip-t { fill: var(--ink); font-size: 11.5px; }
 .key { display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: 15px; color: var(--muted); margin: 0; }
 .key span b { color: var(--ink); font-weight: 700; }
 .key .d { display: inline-block; width: 11px; height: 11px; transform: rotate(45deg); background: var(--gate-fill); border: 1.4px solid var(--gate); margin-right: 8px; vertical-align: -1px; }
@@ -192,103 +196,132 @@ td.size { font-family: var(--mono); font-weight: 500; color: var(--ink); width: 
   <section aria-labelledby="s-flow">
     <div class="section-head">
       <h2 id="s-flow">The whole journey</h2>
-      <p>Left to right for a new solution. A live solution loops back in for a change, or exits through retirement.</p>
+      <p>Left to right for a new solution. The two rows above the spine are what the business and the Product Owner owe the squad at each step, so engineering can deliver without chasing. A live solution loops back in for a change, or exits through retirement.</p>
     </div>
     <div class="flow">
-      <svg viewBox="0 0 1120 348" role="img" aria-label="Flow: Intake, then Assess (SG1), Build (SG2), Test (SG3), Go live (SG4), then Live. From Live, a change is classified: minor returns to Build, major returns to Assess via SG5. Retirement leaves Live via CoE sign-off.">
+      <svg viewBox="0 0 1120 452" role="img" aria-label="Flow: two rows above the spine show what the business and the Product Owner provide at each step. The spine runs Intake (Product Owner), then Assess (SG1), Build (SG2), Test (SG3), Go live (SG4), each owned by a delivery engineer, then Live. From Live, a change is classified: minor returns to Build, major returns to Assess via SG5. Retirement leaves Live via CoE sign-off.">
         <defs>
           <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="head"/></marker>
         </defs>
 
+        <!-- support lanes: what the squad needs from the business and the PO at each step -->
+        <g>
+          <text class="lane-l" x="20" y="14">BUSINESS · WHAT THE SQUAD NEEDS FROM YOU</text>
+          <rect class="chip-b" x="20" y="22" width="140" height="44" rx="3"/>
+          <text class="chip-t" x="90" y="40" text-anchor="middle">Raises the demand,<tspan x="90" dy="16">names an Ops contact</tspan></text>
+          <rect class="chip-b" x="220" y="22" width="140" height="44" rx="3"/>
+          <text class="chip-t" x="290" y="40" text-anchor="middle">Confirms the outcome<tspan x="290" dy="16">and success measure</tspan></text>
+          <rect class="chip-b" x="420" y="22" width="140" height="44" rx="3"/>
+          <text class="chip-t" x="490" y="40" text-anchor="middle">Grants access and test<tspan x="490" dy="16">data before build day 1</tspan></text>
+          <rect class="chip-b" x="620" y="22" width="140" height="44" rx="3"/>
+          <text class="chip-t" x="690" y="40" text-anchor="middle">Runs UAT, signs off<tspan x="690" dy="16">within 5 days</tspan></text>
+          <rect class="chip-b" x="820" y="22" width="140" height="44" rx="3"/>
+          <text class="chip-t" x="890" y="40" text-anchor="middle">Validators check first<tspan x="890" dy="16">runs; Ops take ownership</tspan></text>
+          <rect class="chip-b" x="1020" y="22" width="90" height="44" rx="3"/>
+          <text class="chip-t" x="1065" y="40" text-anchor="middle">Raises changes,<tspan x="1065" dy="16">flags obsolete</tspan></text>
+
+          <text class="lane-l" x="20" y="90">PRODUCT OWNER · WHAT THE SQUAD NEEDS FROM YOU</text>
+          <rect class="chip-p" x="20" y="98" width="140" height="44" rx="3"/>
+          <text class="chip-t" x="90" y="116" text-anchor="middle">Logs, prioritises, names<tspan x="90" dy="16">the delivery engineer</tspan></text>
+          <rect class="chip-p" x="220" y="98" width="140" height="44" rx="3"/>
+          <text class="chip-t" x="290" y="116" text-anchor="middle">Confirms benefit owner,<tspan x="290" dy="16">reports the SG1 result</tspan></text>
+          <rect class="chip-p" x="420" y="98" width="140" height="44" rx="3"/>
+          <text class="chip-t" x="490" y="116" text-anchor="middle">Confirms requirements,<tspan x="490" dy="16">carries slippage up</tspan></text>
+          <rect class="chip-p" x="620" y="98" width="140" height="44" rx="3"/>
+          <text class="chip-t" x="690" y="116" text-anchor="middle">Keeps the business<tspan x="690" dy="16">available for UAT</tspan></text>
+          <rect class="chip-p" x="820" y="98" width="140" height="44" rx="3"/>
+          <text class="chip-t" x="890" y="116" text-anchor="middle">Go-live plan, benefit<tspan x="890" dy="16">tracking, SG4 report</tspan></text>
+          <rect class="chip-p" x="1020" y="98" width="90" height="44" rx="3"/>
+          <text class="chip-t" x="1065" y="116" text-anchor="middle">Classifies<tspan x="1065" dy="16">each change</tspan></text>
+        </g>
+
         <!-- spine boxes -->
         <g>
-          <rect class="box" x="20" y="52" width="140" height="60" rx="4"/>
-          <text class="box-t" x="90" y="78" text-anchor="middle">1 · Intake</text>
-          <text class="box-s" x="90" y="97" text-anchor="middle">Product Owner</text>
+          <text class="lane-l" x="20" y="166">ENGINEERING · OWNS THE WORK THROUGH EVERY GATE</text>
+          <rect class="box" x="20" y="174" width="140" height="60" rx="4"/>
+          <text class="box-t" x="90" y="200" text-anchor="middle">1 · Intake</text>
+          <text class="box-s" x="90" y="219" text-anchor="middle">Product Owner</text>
 
-          <rect class="box" x="220" y="52" width="140" height="60" rx="4"/>
-          <text class="box-t" x="290" y="78" text-anchor="middle">2 · Assess</text>
-          <text class="box-s" x="290" y="97" text-anchor="middle">Delivery engineer</text>
+          <rect class="box" x="220" y="174" width="140" height="60" rx="4"/>
+          <text class="box-t" x="290" y="200" text-anchor="middle">2 · Assess</text>
+          <text class="box-s" x="290" y="219" text-anchor="middle">Delivery engineer</text>
 
-          <rect class="box" x="420" y="52" width="140" height="60" rx="4"/>
-          <text class="box-t" x="490" y="78" text-anchor="middle">3 · Build</text>
-          <text class="box-s" x="490" y="97" text-anchor="middle">Delivery engineer</text>
+          <rect class="box" x="420" y="174" width="140" height="60" rx="4"/>
+          <text class="box-t" x="490" y="200" text-anchor="middle">3 · Build</text>
+          <text class="box-s" x="490" y="219" text-anchor="middle">Delivery engineer</text>
 
-          <rect class="box" x="620" y="52" width="140" height="60" rx="4"/>
-          <text class="box-t" x="690" y="78" text-anchor="middle">4 · Test</text>
-          <text class="box-s" x="690" y="97" text-anchor="middle">Delivery engineer</text>
+          <rect class="box" x="620" y="174" width="140" height="60" rx="4"/>
+          <text class="box-t" x="690" y="200" text-anchor="middle">4 · Test</text>
+          <text class="box-s" x="690" y="219" text-anchor="middle">Delivery engineer</text>
 
-          <rect class="box" x="820" y="52" width="140" height="60" rx="4"/>
-          <text class="box-t" x="890" y="78" text-anchor="middle">5 · Go live</text>
-          <text class="box-s" x="890" y="97" text-anchor="middle">Delivery engineer</text>
+          <rect class="box" x="820" y="174" width="140" height="60" rx="4"/>
+          <text class="box-t" x="890" y="200" text-anchor="middle">5 · Go live</text>
+          <text class="box-s" x="890" y="219" text-anchor="middle">Delivery engineer</text>
 
-          <rect class="live" x="1020" y="52" width="90" height="60" rx="4"/>
-          <text class="live-t" x="1065" y="87" text-anchor="middle">Live</text>
+          <rect class="live" x="1020" y="174" width="90" height="60" rx="4"/>
+          <text class="live-t" x="1065" y="209" text-anchor="middle">Live</text>
         </g>
 
         <!-- spine arrows and gates -->
         <g>
-          <path class="arrow" d="M160 82 H218" marker-end="url(#ah)"/>
-          <text class="note" x="190" y="40" text-anchor="middle">route set:</text>
-          <text class="note-b" x="190" y="130" text-anchor="middle">IA or SA</text>
+          <path class="arrow" d="M160 204 H218" marker-end="url(#ah)"/>
+          <text class="note-b" x="190" y="252" text-anchor="middle">IA or SA</text>
+          <text class="note" x="190" y="266" text-anchor="middle">EL decides</text>
 
-          <path class="arrow" d="M360 82 H418" marker-end="url(#ah)"/>
-          <path class="gate-d" d="M390 66 L406 82 L390 98 L374 82 Z"/>
-          <text class="gate-t" x="390" y="40" text-anchor="middle">SG1</text>
-          <text class="note" x="390" y="130" text-anchor="middle">Opportunity</text>
+          <path class="arrow" d="M360 204 H418" marker-end="url(#ah)"/>
+          <path class="gate-d" d="M390 188 L406 204 L390 220 L374 204 Z"/>
+          <text class="gate-t" x="390" y="252" text-anchor="middle">SG1</text>
+          <text class="note" x="390" y="266" text-anchor="middle">Opportunity</text>
 
-          <path class="arrow" d="M560 82 H618" marker-end="url(#ah)"/>
-          <path class="gate-d" d="M590 66 L606 82 L590 98 L574 82 Z"/>
-          <text class="gate-t" x="590" y="40" text-anchor="middle">SG2</text>
-          <text class="note" x="590" y="130" text-anchor="middle">Build readiness</text>
+          <path class="arrow" d="M560 204 H618" marker-end="url(#ah)"/>
+          <path class="gate-d" d="M590 188 L606 204 L590 220 L574 204 Z"/>
+          <text class="gate-t" x="590" y="252" text-anchor="middle">SG2</text>
+          <text class="note" x="590" y="266" text-anchor="middle">Build readiness</text>
 
-          <path class="arrow" d="M760 82 H818" marker-end="url(#ah)"/>
-          <path class="gate-d" d="M790 66 L806 82 L790 98 L774 82 Z"/>
-          <text class="gate-t" x="790" y="40" text-anchor="middle">SG3</text>
-          <text class="note" x="790" y="130" text-anchor="middle">Test to Live</text>
+          <path class="arrow" d="M760 204 H818" marker-end="url(#ah)"/>
+          <path class="gate-d" d="M790 188 L806 204 L790 220 L774 204 Z"/>
+          <text class="gate-t" x="790" y="252" text-anchor="middle">SG3</text>
+          <text class="note" x="790" y="266" text-anchor="middle">Test to Live</text>
 
-          <path class="arrow" d="M960 82 H1018" marker-end="url(#ah)"/>
-          <path class="gate-d" d="M990 66 L1006 82 L990 98 L974 82 Z"/>
-          <text class="gate-t" x="990" y="40" text-anchor="middle">SG4</text>
-          <text class="note" x="990" y="130" text-anchor="middle">Hypercare to BAU</text>
+          <path class="arrow" d="M960 204 H1018" marker-end="url(#ah)"/>
+          <path class="gate-d" d="M990 188 L1006 204 L990 220 L974 204 Z"/>
+          <text class="gate-t" x="990" y="252" text-anchor="middle">SG4</text>
+          <text class="note" x="990" y="266" text-anchor="middle">Hypercare to BAU</text>
         </g>
 
         <!-- in-life: change loop -->
         <g>
-          <path class="arrow" d="M1040 112 V160 H770 V193" marker-end="url(#ah)"/>
-          <text class="note" x="905" y="153" text-anchor="middle">change requested</text>
+          <path class="arrow" d="M1040 234 V284 H770 V317" marker-end="url(#ah)"/>
+          <text class="note" x="905" y="277" text-anchor="middle">change requested</text>
 
-          <rect class="sub" x="560" y="195" width="340" height="60" rx="4"/>
-          <text class="sub-t" x="730" y="219" text-anchor="middle">6 · Change to a live solution</text>
-          <text class="sub-s" x="730" y="238" text-anchor="middle">Product Owner classifies by size and risk together</text>
+          <rect class="sub" x="560" y="319" width="340" height="60" rx="4"/>
+          <text class="sub-t" x="730" y="343" text-anchor="middle">6 · Change to a live solution</text>
+          <text class="sub-s" x="730" y="362" text-anchor="middle">Product Owner classifies by size and risk together</text>
 
-          <!-- minor: back to Build -->
-          <path class="arrow" d="M690 195 V180 H490 V116" marker-end="url(#ah)"/>
-          <text class="note-b" x="590" y="172" text-anchor="middle">minor <tspan class="note" font-weight="400">· light build and test</tspan></text>
+          <path class="arrow" d="M690 319 V300 H490 V238" marker-end="url(#ah)"/>
+          <text class="note-b" x="590" y="294" text-anchor="middle">minor <tspan class="note" font-weight="400">· light build and test</tspan></text>
 
-          <!-- major: back to Assess via SG5 -->
-          <path class="arrow" d="M560 240 H290 V116" marker-end="url(#ah)"/>
-          <path class="gate-d" d="M430 224 L446 240 L430 256 L414 240 Z"/>
-          <text class="gate-t" x="430" y="275" text-anchor="middle">SG5</text>
-          <text class="note-b" x="330" y="230" text-anchor="middle">major</text>
-          <text class="note" x="330" y="262" text-anchor="middle">re-runs every gate</text>
-          <text class="note" x="530" y="262" text-anchor="middle">Enhancement to Live</text>
+          <path class="arrow" d="M560 364 H290 V238" marker-end="url(#ah)"/>
+          <path class="gate-d" d="M430 348 L446 364 L430 380 L414 364 Z"/>
+          <text class="gate-t" x="430" y="399" text-anchor="middle">SG5</text>
+          <text class="note-b" x="330" y="354" text-anchor="middle">major</text>
+          <text class="note" x="330" y="386" text-anchor="middle">re-runs every gate</text>
+          <text class="note" x="530" y="386" text-anchor="middle">Enhancement to Live</text>
         </g>
 
         <!-- in-life: retirement -->
         <g>
-          <path class="arrow" d="M1090 112 V193" marker-end="url(#ah)"/>
-          <rect class="sub" x="960" y="195" width="150" height="60" rx="4"/>
-          <text class="sub-t" x="1035" y="219" text-anchor="middle">7 · Retire</text>
-          <text class="sub-s" x="1035" y="238" text-anchor="middle">Delivery engineer</text>
-          <path class="arrow" d="M1035 255 V290" marker-end="url(#ah)"/>
-          <path class="gate-d" d="M1035 297 L1047 309 L1035 321 L1023 309 Z"/>
-          <text class="gate-t" x="1035" y="340" text-anchor="middle">CoE sign-off</text>
+          <path class="arrow" d="M1090 234 V317" marker-end="url(#ah)"/>
+          <rect class="sub" x="960" y="319" width="150" height="60" rx="4"/>
+          <text class="sub-t" x="1035" y="343" text-anchor="middle">7 · Retire</text>
+          <text class="sub-s" x="1035" y="362" text-anchor="middle">Delivery engineer</text>
+          <path class="arrow" d="M1035 379 V404" marker-end="url(#ah)"/>
+          <path class="gate-d" d="M1035 411 L1047 423 L1035 435 L1023 423 Z"/>
+          <text class="gate-t" x="1035" y="450" text-anchor="middle">CoE sign-off</text>
         </g>
 
-        <!-- footer note -->
-        <text class="note" x="20" y="300">A small change to something critical is treated as major.</text>
-        <text class="note" x="20" y="318">Work does not pass a gate on a promise. Evidence first, then the decision.</text>
+        <text class="note" x="20" y="424">A small change to something critical is treated as major.</text>
+        <text class="note" x="20" y="442">Work does not pass a gate on a promise. Evidence first, then the decision.</text>
       </svg>
     </div>
     <p class="key"><span><span class="d"></span><b>CoE gate.</b> The delivery engineer submits, the CoE decides.</span><span><b>IA</b> runs the full gate at every step.</span><span><b>SA</b> runs the same steps with a lighter check: a register entry instead of a full opportunity case, and proportionate evidence at each gate.</span></p>
