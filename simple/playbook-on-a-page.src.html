@@ -183,7 +183,7 @@ td.size { font-family: var(--mono); font-weight: 500; color: var(--ink); width: 
   <header>
     <span class="label">IPA delivery playbook · the short version</span>
     <h1>How we deliver automation</h1>
-    <p class="lede">Every request goes through the same <strong>five steps</strong>, whether it is Intelligent Automation (RPA) or Smart Automation (Power Platform). Each step has <strong>one owner</strong> and ends at a <strong>CoE gate</strong>. The route changes how heavy the gate is. It never changes the steps.</p>
+    <p class="lede">Every request goes through the same <strong>five steps</strong>, whether it is Intelligent Automation (RPA) or Smart Automation (Power Platform). Each step has <strong>one owner</strong> and ends at a <strong>CoE gate</strong>. The Product Owner owns demand. A named delivery engineer owns getting the work through the gates. The route changes how heavy the gate is. It never changes the steps.</p>
   </header>
 
   <section aria-labelledby="s-flow">
@@ -205,19 +205,19 @@ td.size { font-family: var(--mono); font-weight: 500; color: var(--ink); width: 
 
           <rect class="box" x="220" y="52" width="140" height="60" rx="4"/>
           <text class="box-t" x="290" y="78" text-anchor="middle">2 · Assess</text>
-          <text class="box-s" x="290" y="97" text-anchor="middle">Engineering Lead</text>
+          <text class="box-s" x="290" y="97" text-anchor="middle">Delivery engineer</text>
 
           <rect class="box" x="420" y="52" width="140" height="60" rx="4"/>
           <text class="box-t" x="490" y="78" text-anchor="middle">3 · Build</text>
-          <text class="box-s" x="490" y="97" text-anchor="middle">Engineering Lead</text>
+          <text class="box-s" x="490" y="97" text-anchor="middle">Delivery engineer</text>
 
           <rect class="box" x="620" y="52" width="140" height="60" rx="4"/>
           <text class="box-t" x="690" y="78" text-anchor="middle">4 · Test</text>
-          <text class="box-s" x="690" y="97" text-anchor="middle">Engineering Lead</text>
+          <text class="box-s" x="690" y="97" text-anchor="middle">Delivery engineer</text>
 
           <rect class="box" x="820" y="52" width="140" height="60" rx="4"/>
           <text class="box-t" x="890" y="78" text-anchor="middle">5 · Go live</text>
-          <text class="box-s" x="890" y="97" text-anchor="middle">Engineering Lead</text>
+          <text class="box-s" x="890" y="97" text-anchor="middle">Delivery engineer</text>
 
           <rect class="live" x="1020" y="52" width="90" height="60" rx="4"/>
           <text class="live-t" x="1065" y="87" text-anchor="middle">Live</text>
@@ -277,7 +277,7 @@ td.size { font-family: var(--mono); font-weight: 500; color: var(--ink); width: 
           <path class="arrow" d="M1090 112 V193" marker-end="url(#ah)"/>
           <rect class="sub" x="960" y="195" width="150" height="60" rx="4"/>
           <text class="sub-t" x="1035" y="219" text-anchor="middle">7 · Retire</text>
-          <text class="sub-s" x="1035" y="238" text-anchor="middle">Engineering Lead</text>
+          <text class="sub-s" x="1035" y="238" text-anchor="middle">Delivery engineer</text>
           <path class="arrow" d="M1035 255 V290" marker-end="url(#ah)"/>
           <path class="gate-d" d="M1035 297 L1047 309 L1035 321 L1023 309 Z"/>
           <text class="gate-t" x="1035" y="340" text-anchor="middle">CoE sign-off</text>
@@ -288,7 +288,7 @@ td.size { font-family: var(--mono); font-weight: 500; color: var(--ink); width: 
         <text class="note" x="20" y="318">Work does not pass a gate on a promise. Evidence first, then the decision.</text>
       </svg>
     </div>
-    <p class="key"><span><span class="d"></span><b>CoE gate.</b> The Engineering Lead submits, the CoE decides.</span><span><b>IA</b> runs the full gate at every step.</span><span><b>SA</b> runs the same steps with a lighter check: a register entry instead of a full opportunity case, and proportionate evidence at each gate.</span></p>
+    <p class="key"><span><span class="d"></span><b>CoE gate.</b> The delivery engineer submits, the CoE decides.</span><span><b>IA</b> runs the full gate at every step.</span><span><b>SA</b> runs the same steps with a lighter check: a register entry instead of a full opportunity case, and proportionate evidence at each gate.</span></p>
   </section>
 
   <section aria-labelledby="s-steps">
@@ -303,15 +303,15 @@ td.size { font-family: var(--mono); font-weight: 500; color: var(--ink); width: 
           <span class="n">STEP 1</span>
           <h3>Intake</h3>
           <p class="owner">Owner: <b>Product Owner</b></p>
-          <p class="done"><b>Done when</b> the request is logged, routed, sized and has a named Ops contact.</p>
+          <p class="done"><b>Done when</b> the request is logged, routed, sized, and has a named Ops contact and a named delivery engineer.</p>
           <div class="step-gate none">No gate. Nothing starts without this step.</div>
         </div>
         <ol class="acts">
           <li><span><b>Business</b> raises the demand, with its context, and names an Ops contact.</span><span class="when">Same day</span></li>
           <li><span><b>Product Owner</b> logs it, confirms the outcome and priority, and passes it for routing.</span><span class="when">Within 1 day</span></li>
           <li><span><b>Engineers</b> give current platform capability and squad capacity.</span><span class="when">Before the route is set</span></li>
-          <li><span><b>Engineering Lead</b> decides IA or SA on technical grounds, sets the provisional size and the risk flag, and tells the PO and the business.</span><span class="when">Within 2 days</span></li>
-          <li><span><b>Product Owner</b> adds it to the pipeline and opens the Teams channel with the pinned post.</span><span class="when">Next daily sync</span></li>
+          <li><span><b>Engineering Lead</b> decides IA or SA on technical grounds and tells the PO and the business. <b>Engineers</b> set the provisional size and the risk flag.</span><span class="when">Within 2 days</span></li>
+          <li><span><b>Product Owner</b> adds it to the pipeline, names the delivery engineer who will own it, and opens the Teams channel with the pinned post.</span><span class="when">Next daily sync</span></li>
         </ol>
       </li>
 
@@ -319,14 +319,15 @@ td.size { font-family: var(--mono); font-weight: 500; color: var(--ink); width: 
         <div class="step-side">
           <span class="n">STEP 2</span>
           <h3>Assess</h3>
-          <p class="owner">Owner: <b>Engineering Lead</b></p>
+          <p class="owner">Owner: <b>Delivery engineer</b></p>
           <p class="done"><b>Done when</b> the CoE approves the case (IA) or the register entry is complete (SA), and the size is confirmed.</p>
           <div class="step-gate">SG1 · Opportunity Assessment</div>
         </div>
         <ol class="acts">
           <li><span><b>Product Owner</b> confirms the business outcome, benefit owner and success measure with the business.</span><span class="when">Before the case is built</span></li>
           <li><span><b>Engineers</b> assess platform fit, data, connectors and access, and produce an indicative breakdown with the size it supports.</span><span class="when">Before submission</span></li>
-          <li><span><b>Engineering Lead</b> submits the SG1 opportunity case (IA) or completes the register entry (SA).</span><span class="when">At the gate</span></li>
+          <li><span><b>Engineering Lead</b> confirms the technology choice and architecture fit, and unblocks anything the squad cannot reach on its own.</span><span class="when">Before submission</span></li>
+          <li><span><b>Delivery engineer</b> submits the SG1 opportunity case (IA) or completes the register entry (SA).</span><span class="when">At the gate</span></li>
           <li><span><b>CoE</b> returns the decision, with any conditions.</span><span class="when">At the gate</span></li>
           <li><span><b>Product Owner</b> tells the business the outcome, the confirmed size and what happens next. <span class="esc">A fail is escalated to leads.</span></span><span class="when">Within 2 days of the decision</span></li>
         </ol>
@@ -336,7 +337,7 @@ td.size { font-family: var(--mono); font-weight: 500; color: var(--ink); width: 
         <div class="step-side">
           <span class="n">STEP 3</span>
           <h3>Build</h3>
-          <p class="owner">Owner: <b>Engineering Lead</b></p>
+          <p class="owner">Owner: <b>Delivery engineer</b></p>
           <p class="done"><b>Done when</b> the build is complete and the charter, route-to-live material and test plan are ready.</p>
           <div class="step-gate">SG2 · Build readiness</div>
         </div>
@@ -344,9 +345,9 @@ td.size { font-family: var(--mono); font-weight: 500; color: var(--ink); width: 
           <li><span><b>Product Owner</b> confirms requirements with the business and raises the formal access request.</span><span class="when">Within 2 days of SG1</span></li>
           <li><span><b>Business</b> grants system access, credentials and representative test data.</span><span class="when">Before the first build day</span></li>
           <li><span><b>Engineers</b> break the work down, sequence it and estimate it against the confirmed size.</span><span class="when">Before the first build day</span></li>
-          <li><span><b>Engineers</b> build, and report progress, blockers and gaps first hand. The squad takes its own technical decisions unless scope, cost or the date moves.</span><span class="when">Every day, at daily sync</span></li>
-          <li><span><b>Engineering Lead</b> calls out any slippage at the feature sync. <span class="esc">In the week it appears, not after.</span></span><span class="when">That week</span></li>
-          <li><span><b>Engineering Lead</b> submits SG2 with the charter and route-to-live material.</span><span class="when">At the gate</span></li>
+          <li><span><b>Engineers</b> build, and report progress, blockers and gaps first hand. The squad takes its own technical decisions. <span class="esc">Technical blockers and stack questions go to the Engineering Lead; scope, priority and business blockers go to the Product Owner.</span></span><span class="when">Every day, at daily sync</span></li>
+          <li><span><b>Delivery engineer</b> raises any slippage at the daily sync, and the Product Owner carries it to the feature sync. <span class="esc">In the week it appears, not after.</span></span><span class="when">That week</span></li>
+          <li><span><b>Delivery engineer</b> submits SG2 with the charter and route-to-live material.</span><span class="when">At the gate</span></li>
         </ol>
       </li>
 
@@ -354,7 +355,7 @@ td.size { font-family: var(--mono); font-weight: 500; color: var(--ink); width: 
         <div class="step-side">
           <span class="n">STEP 4</span>
           <h3>Test</h3>
-          <p class="owner">Owner: <b>Engineering Lead</b></p>
+          <p class="owner">Owner: <b>Delivery engineer</b></p>
           <p class="done"><b>Done when</b> every test case has evidenced results, defects are triaged and the business has signed off UAT.</p>
           <div class="step-gate">SG3 · Test to Live</div>
         </div>
@@ -362,9 +363,9 @@ td.size { font-family: var(--mono); font-weight: 500; color: var(--ink); width: 
           <li><span><b>Engineers</b> open the test cycle against the agreed test plan.</span><span class="when">Immediately after SG2</span></li>
           <li><span><b>Engineers</b> raise, triage and prioritise each defect. <span class="esc">P1 and P2 go to leads with the date impact.</span></span><span class="when">Same day it is found</span></li>
           <li><span><b>Engineers</b> assemble evidenced results against every test case.</span><span class="when">Before UAT opens</span></li>
-          <li><span><b>Engineering Lead</b> opens UAT with the business: scope, test data and sign-off criteria.</span><span class="when">3 days' notice, minimum</span></li>
+          <li><span><b>Delivery engineer</b> opens UAT with the business: scope, test data and sign-off criteria.</span><span class="when">3 days' notice, minimum</span></li>
           <li><span><b>Business</b> signs UAT off, or names the defects blocking it.</span><span class="when">Within 5 days of UAT opening</span></li>
-          <li><span><b>Engineering Lead</b> submits SG3 with the evidence and the UAT sign-off.</span><span class="when">At the gate</span></li>
+          <li><span><b>Delivery engineer</b> submits SG3 with the evidence and the UAT sign-off.</span><span class="when">At the gate</span></li>
         </ol>
       </li>
 
@@ -372,7 +373,7 @@ td.size { font-family: var(--mono); font-weight: 500; color: var(--ink); width: 
         <div class="step-side">
           <span class="n">STEP 5</span>
           <h3>Go live</h3>
-          <p class="owner">Owner: <b>Engineering Lead</b></p>
+          <p class="owner">Owner: <b>Delivery engineer</b></p>
           <p class="done"><b>Done when</b> every scenario has passed its first live run, hypercare has run its window with no P1 or P2 open, Ops are trained and own it, and benefit tracking is live.</p>
           <div class="step-gate">SG4 · Hypercare to BAU</div>
         </div>
@@ -382,7 +383,7 @@ td.size { font-family: var(--mono); font-weight: 500; color: var(--ink); width: 
           <li><span><b>Engineers</b> run first-run checks (FOV) and report coverage: validated, outstanding, variants found. <span class="esc">A failed scenario goes back to build the same day.</span></span><span class="when">Every day until coverage is complete</span></li>
           <li><span><b>Business</b> signs FOV off once every scenario is validated and its output reconciled.</span><span class="when">When coverage is complete</span></li>
           <li><span><b>Engineers</b> support hypercare for the window the size sets.</span><span class="when">3 to 20 days by size</span></li>
-          <li><span><b>Engineering Lead</b> submits SG4 with Ops ownership confirmed.</span><span class="when">End of the hypercare window</span></li>
+          <li><span><b>Delivery engineer</b> submits SG4 with Ops ownership confirmed.</span><span class="when">End of the hypercare window</span></li>
           <li><span><b>Product Owner</b> reports ownership confirmed and benefit tracking at planning and prioritisation.</span><span class="when">Within 5 days of SG4</span></li>
         </ol>
       </li>
@@ -400,20 +401,20 @@ td.size { font-family: var(--mono); font-weight: 500; color: var(--ink); width: 
         <div class="meta"><span>Owner: <b>Product Owner</b></span><span>Gate: <b>SG5 · Enhancement to Live</b>, major only</span></div>
         <ol class="acts">
           <li><span><b>Business</b> raises the change, with the driver behind it.</span><span class="when">Same day</span></li>
-          <li><span><b>Engineering Lead</b> gives the technical impact, size advice and risk flag, with squad input on effort.</span><span class="when">Within 2 days</span></li>
+          <li><span><b>Engineers</b> give the technical impact, size advice and risk flag. The Engineering Lead weighs in where the change raises a technology or architecture question.</span><span class="when">Within 2 days</span></li>
           <li><span><b>Product Owner</b> classifies it by size and risk, names the path, and the step it re-enters at: minor goes to Build, major goes to Assess.</span><span class="when">Within 3 days of the request</span></li>
-          <li><span><b>Engineering Lead</b> submits SG5 for a major change, or a CoE consult for any risk-flagged change, whatever its size.</span><span class="when">Before the change moves</span></li>
+          <li><span><b>Delivery engineer</b> submits SG5 for a major change, or a CoE consult for any risk-flagged change, whatever its size.</span><span class="when">Before the change moves</span></li>
         </ol>
         <p class="callout">A small change to something critical still takes the long route.</p>
       </article>
       <article class="card">
         <h3>7 · Retire a solution</h3>
-        <div class="meta"><span>Owner: <b>Engineering Lead</b></span><span>Gate: <b>CoE decommission sign-off</b></span></div>
+        <div class="meta"><span>Owner: <b>Delivery engineer</b></span><span>Gate: <b>CoE decommission sign-off</b></span></div>
         <ol class="acts">
           <li><span><b>Business</b> confirms the solution is no longer needed, and why.</span><span class="when">Same day it is flagged</span></li>
           <li><span><b>Product Owner</b> issues the decommission instruction and the agreed removal date.</span><span class="when">Within 5 days</span></li>
           <li><span><b>Engineers</b> remove the assets, disable schedules, revoke access and archive the documentation.</span><span class="when">On the removal date</span></li>
-          <li><span><b>Engineering Lead</b> submits the sign-off and updates the estate register.</span><span class="when">At CoE sign-off</span></li>
+          <li><span><b>Delivery engineer</b> submits the sign-off and updates the estate register.</span><span class="when">At CoE sign-off</span></li>
         </ol>
         <p>Retirement is a planned step on both routes, so the estate stays clean.</p>
       </article>
@@ -426,12 +427,12 @@ td.size { font-family: var(--mono); font-weight: 500; color: var(--ink); width: 
     </div>
     <dl class="roles">
       <div class="role"><dt>Business</dt><dd>Raises the need, confirms the outcome, grants access, signs off UAT and validates the first live runs. Owns and operates the solution once it is live.</dd></div>
-      <div class="role"><dt>Product Owner</dt><dd>Owns demand, value and priority. Accountable for intake and for classifying changes. Owns the Teams channel and every message to the business.</dd></div>
-      <div class="role"><dt>Engineering Lead</dt><dd>Accountable for delivery from assessment to retirement. Decides the route and submits every gate to the CoE.</dd></div>
-      <div class="role"><dt>Engineers</dt><dd>Assess, break down, build, test and support the work. Responsible wherever the work is technical.</dd></div>
+      <div class="role"><dt>Product Owner</dt><dd>Owns demand, value and priority. Accountable for intake and for classifying changes. Names the delivery engineer, owns the Teams channel and every message to the business. First call for scope, priority and business blockers.</dd></div>
+      <div class="role"><dt>Engineering Lead</dt><dd>Owns technology choice. Decides the route and the stack for a problem, settles technical decisions and architecture fit, and unblocks what the squad cannot reach: other tech teams, architecture, platforms. First call for technical blockers. Not accountable for getting work through the gates.</dd></div>
+      <div class="role"><dt>Engineers</dt><dd>Own the delivery. A named delivery engineer is accountable for each piece of work from assessment to retirement: sizes it, keeps it on track and submits every gate. Senior engineers are expected to know what the platforms can do and to make sound estimates.</dd></div>
       <div class="role coe"><dt>CoE</dt><dd>Decides the gates. Consulted at every gate, never accountable for delivery.</dd></div>
     </dl>
-    <p class="rule-line"><b>One accountable owner per step.</b> Never two, never none.</p>
+    <p class="rule-line"><b>One accountable owner per step.</b> Never two, never none. The Product Owner for demand, the delivery engineer for delivery.</p>
   </section>
 
   <section aria-labelledby="s-size">
@@ -481,7 +482,7 @@ td.size { font-family: var(--mono); font-weight: 500; color: var(--ink); width: 
       </dl>
       <div class="escalate">
         <b>Escalation</b>
-        <span>A missed timing goes to the daily sync. Slippage goes to the feature sync. A failed gate, or a P1 or P2 defect, goes to leads at planning and prioritisation, with the date impact.</span>
+        <span>Technical blockers and stack questions go to the Engineering Lead. Scope, priority and business blockers go to the Product Owner. A missed timing goes to the daily sync, slippage to the feature sync. A failed gate, or a P1 or P2 defect, goes to leads at planning and prioritisation, with the date impact.</span>
       </div>
     </section>
   </div>
