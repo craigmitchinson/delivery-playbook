@@ -91,9 +91,11 @@ section { display: grid; gap: 20px; }
 .flow .lane-l { fill: var(--muted); font-family: var(--mono); font-size: 10.5px; font-weight: 500; letter-spacing: 0.08em; }
 .flow .chip-b { fill: var(--panel); stroke: var(--line); }
 .flow .chip-p { fill: var(--surface); stroke: var(--soft); stroke-dasharray: 3 2; }
+.flow .chip-s { fill: var(--gate-fill); stroke: var(--gate); }
 .flow .chip-t { fill: var(--ink); font-size: 11.5px; }
 .key { display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: 15px; color: var(--muted); margin: 0; }
 .key span b { color: var(--ink); font-weight: 700; }
+.key .sq { display: inline-block; width: 11px; height: 11px; background: var(--gate-fill); border: 1.4px solid var(--gate); border-radius: 2px; margin-right: 8px; vertical-align: -1px; }
 .key .d { display: inline-block; width: 11px; height: 11px; transform: rotate(45deg); background: var(--gate-fill); border: 1.4px solid var(--gate); margin-right: 8px; vertical-align: -1px; }
 
 /* Steps as rows: left = the step, right = who does what by when */
@@ -210,13 +212,13 @@ td.size { font-family: var(--mono); font-weight: 500; color: var(--ink); width: 
           <rect class="chip-b" x="20" y="22" width="140" height="44" rx="3"/>
           <text class="chip-t" x="90" y="40" text-anchor="middle">Raises the demand,<tspan x="90" dy="16">names an Ops contact</tspan></text>
           <rect class="chip-b" x="220" y="22" width="140" height="44" rx="3"/>
-          <text class="chip-t" x="290" y="40" text-anchor="middle">Confirms the outcome<tspan x="290" dy="16">and success measure</tspan></text>
-          <rect class="chip-b" x="420" y="22" width="140" height="44" rx="3"/>
-          <text class="chip-t" x="490" y="40" text-anchor="middle">Grants access and test<tspan x="490" dy="16">data before build day 1</tspan></text>
-          <rect class="chip-b" x="620" y="22" width="140" height="44" rx="3"/>
-          <text class="chip-t" x="690" y="40" text-anchor="middle">Runs UAT, signs off<tspan x="690" dy="16">within 5 days</tspan></text>
-          <rect class="chip-b" x="820" y="22" width="140" height="44" rx="3"/>
-          <text class="chip-t" x="890" y="40" text-anchor="middle">Validators check first<tspan x="890" dy="16">runs; Ops take ownership</tspan></text>
+          <text class="chip-t" x="290" y="40" text-anchor="middle">Process map, volumes,<tspan x="290" dy="16">outcome and measure</tspan></text>
+          <rect class="chip-s" x="420" y="22" width="140" height="44" rx="3"/>
+          <text class="chip-t" x="490" y="40" text-anchor="middle">✓ Signs off requirements;<tspan x="490" dy="16">access + test data, day 1</tspan></text>
+          <rect class="chip-s" x="620" y="22" width="140" height="44" rx="3"/>
+          <text class="chip-t" x="690" y="40" text-anchor="middle">✓ Runs UAT, signs off<tspan x="690" dy="16">within 5 days</tspan></text>
+          <rect class="chip-s" x="820" y="22" width="140" height="44" rx="3"/>
+          <text class="chip-t" x="890" y="40" text-anchor="middle">✓ Signs off first runs,<tspan x="890" dy="16">✓ accepts ownership</tspan></text>
           <rect class="chip-b" x="1020" y="22" width="90" height="44" rx="3"/>
           <text class="chip-t" x="1065" y="40" text-anchor="middle">Raises changes,<tspan x="1065" dy="16">flags obsolete</tspan></text>
 
@@ -224,9 +226,9 @@ td.size { font-family: var(--mono); font-weight: 500; color: var(--ink); width: 
           <rect class="chip-p" x="20" y="98" width="140" height="44" rx="3"/>
           <text class="chip-t" x="90" y="116" text-anchor="middle">Logs, prioritises, names<tspan x="90" dy="16">the delivery engineer</tspan></text>
           <rect class="chip-p" x="220" y="98" width="140" height="44" rx="3"/>
-          <text class="chip-t" x="290" y="116" text-anchor="middle">Confirms benefit owner,<tspan x="290" dy="16">reports the SG1 result</tspan></text>
+          <text class="chip-t" x="290" y="116" text-anchor="middle">Owns the requirements,<tspan x="290" dy="16">reports the SG1 result</tspan></text>
           <rect class="chip-p" x="420" y="98" width="140" height="44" rx="3"/>
-          <text class="chip-t" x="490" y="116" text-anchor="middle">Confirms requirements,<tspan x="490" dy="16">carries slippage up</tspan></text>
+          <text class="chip-t" x="490" y="116" text-anchor="middle">Gets requirements signed,<tspan x="490" dy="16">carries slippage up</tspan></text>
           <rect class="chip-p" x="620" y="98" width="140" height="44" rx="3"/>
           <text class="chip-t" x="690" y="116" text-anchor="middle">Keeps the business<tspan x="690" dy="16">available for UAT</tspan></text>
           <rect class="chip-p" x="820" y="98" width="140" height="44" rx="3"/>
@@ -324,7 +326,7 @@ td.size { font-family: var(--mono); font-weight: 500; color: var(--ink); width: 
         <text class="note" x="20" y="442">Work does not pass a gate on a promise. Evidence first, then the decision.</text>
       </svg>
     </div>
-    <p class="key"><span><span class="d"></span><b>CoE gate.</b> The delivery engineer submits, the CoE decides.</span><span><b>IA</b> runs the full gate at every step.</span><span><b>SA</b> runs the same steps with a lighter check: a register entry instead of a full opportunity case, and proportionate evidence at each gate.</span></p>
+    <p class="key"><span><span class="d"></span><b>CoE gate.</b> The delivery engineer submits, the CoE decides.</span><span><span class="sq"></span><b>Business sign-off.</b> Four of them: requirements before build, UAT before SG3, first runs before anything scales, ownership before SG4.</span><span><b>IA</b> runs the full gate at every step.</span><span><b>SA</b> runs the same steps with a lighter check: a register entry instead of a full opportunity case, and proportionate evidence at each gate.</span></p>
   </section>
 
   <section aria-labelledby="s-steps">
@@ -356,11 +358,12 @@ td.size { font-family: var(--mono); font-weight: 500; color: var(--ink); width: 
           <span class="n">STEP 2</span>
           <h3>Assess</h3>
           <p class="owner">Owner: <b>Delivery engineer</b></p>
-          <p class="done"><b>Done when</b> the CoE approves the case (IA) or the register entry is complete (SA), and the size is confirmed.</p>
+          <p class="done"><b>Done when</b> the CoE approves the case (IA) or the register entry is complete (SA), the process map is in hand and the size is confirmed.</p>
           <div class="step-gate">SG1 · Opportunity Assessment</div>
         </div>
         <ol class="acts">
-          <li><span><b>Product Owner</b> confirms the business outcome, benefit owner and success measure with the business.</span><span class="when">Before the case is built</span></li>
+          <li><span><b>Business</b> walks the squad through the current process and provides the process map, volumes, exceptions and the systems touched.</span><span class="when">Before the case is built</span></li>
+          <li><span><b>Product Owner</b> confirms the business outcome, benefit owner and success measure, and owns the requirements from here on.</span><span class="when">Before the case is built</span></li>
           <li><span><b>Engineers</b> assess platform fit, data, connectors and access, and produce an indicative breakdown with the size it supports.</span><span class="when">Before submission</span></li>
           <li><span><b>Engineering Lead</b> confirms the technology choice and architecture fit, and unblocks anything the squad cannot reach on its own.</span><span class="when">Before submission</span></li>
           <li><span><b>Delivery engineer</b> submits the SG1 opportunity case (IA) or completes the register entry (SA).</span><span class="when">At the gate</span></li>
@@ -378,7 +381,8 @@ td.size { font-family: var(--mono); font-weight: 500; color: var(--ink); width: 
           <div class="step-gate">SG2 · Build readiness</div>
         </div>
         <ol class="acts">
-          <li><span><b>Product Owner</b> confirms requirements with the business and raises the formal access request.</span><span class="when">Within 2 days of SG1</span></li>
+          <li><span><b>Product Owner</b> confirms the requirements and the to-be process with the business and raises the formal access request.</span><span class="when">Within 2 days of SG1</span></li>
+          <li><span><b>Business</b> signs off the requirements and the process map. <span class="esc">No sign-off, no build day one.</span></span><span class="when">Before the first build day</span></li>
           <li><span><b>Business</b> grants system access, credentials and representative test data.</span><span class="when">Before the first build day</span></li>
           <li><span><b>Engineers</b> break the work down, sequence it and estimate it against the confirmed size.</span><span class="when">Before the first build day</span></li>
           <li><span><b>Engineers</b> build, and report progress, blockers and gaps first hand. The squad takes its own technical decisions. <span class="esc">Technical blockers and stack questions go to the Engineering Lead; scope, priority and business blockers go to the Product Owner.</span></span><span class="when">Every day, at daily sync</span></li>
@@ -419,6 +423,7 @@ td.size { font-family: var(--mono); font-weight: 500; color: var(--ink); width: 
           <li><span><b>Engineers</b> run first-run checks (FOV) and report coverage: validated, outstanding, variants found. <span class="esc">A failed scenario goes back to build the same day.</span></span><span class="when">Every day until coverage is complete</span></li>
           <li><span><b>Business</b> signs FOV off once every scenario is validated and its output reconciled.</span><span class="when">When coverage is complete</span></li>
           <li><span><b>Engineers</b> support hypercare for the window the size sets.</span><span class="when">3 to 20 days by size</span></li>
+          <li><span><b>Business</b> accepts operational ownership: Ops trained on the runbook and confident to run it.</span><span class="when">Before hypercare closes</span></li>
           <li><span><b>Delivery engineer</b> submits SG4 with Ops ownership confirmed.</span><span class="when">End of the hypercare window</span></li>
           <li><span><b>Product Owner</b> reports ownership confirmed and benefit tracking at planning and prioritisation.</span><span class="when">Within 5 days of SG4</span></li>
         </ol>
@@ -462,7 +467,7 @@ td.size { font-family: var(--mono); font-weight: 500; color: var(--ink); width: 
       <h2 id="s-roles">Who owns what</h2>
     </div>
     <dl class="roles">
-      <div class="role"><dt>Business</dt><dd>Raises the need, confirms the outcome, grants access, signs off UAT and validates the first live runs. Owns and operates the solution once it is live.</dd></div>
+      <div class="role"><dt>Business</dt><dd>Raises the need, provides the process map and volumes, grants access and test data. Gives four sign-offs: requirements, UAT, first runs, ownership. Owns and operates the solution once it is live.</dd></div>
       <div class="role"><dt>Product Owner</dt><dd>Owns demand, value and priority. Accountable for intake and for classifying changes. Names the delivery engineer, owns the Teams channel and every message to the business. First call for scope, priority and business blockers.</dd></div>
       <div class="role"><dt>Engineering Lead</dt><dd>Owns technology choice. Decides the route and the stack for a problem, settles technical decisions and architecture fit, and unblocks what the squad cannot reach: other tech teams, architecture, platforms. First call for technical blockers. Not accountable for getting work through the gates.</dd></div>
       <div class="role"><dt>Engineers</dt><dd>Own the delivery. A named delivery engineer is accountable for each piece of work from assessment to retirement: sizes it, keeps it on track and submits every gate. Senior engineers are expected to know what the platforms can do and to make sound estimates.</dd></div>
@@ -498,7 +503,7 @@ td.size { font-family: var(--mono); font-weight: 500; color: var(--ink); width: 
       <div class="section-head"><h2 id="s-rules">Six rules we don't bend</h2></div>
       <ol class="rules">
         <li>All work comes in through intake. No side doors.</li>
-        <li>No build starts until the assessment is approved and the business outcome is confirmed.</li>
+        <li>No build starts until the assessment is approved and the business has signed off the requirements and process map.</li>
         <li>Nothing reaches production without evidenced testing and CoE approval.</li>
         <li>Nothing scales until every scenario has passed its first live run.</li>
         <li>Every change to a live solution is classified by size and risk before it moves.</li>
