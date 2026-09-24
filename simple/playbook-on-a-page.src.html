@@ -191,7 +191,8 @@ td.size { font-family: var(--mono); font-weight: 500; color: var(--ink); width: 
   .lede { font-size: 15.5px; }
   .flow { padding: 6px 4px 0; }
   .flow svg { min-width: 0; max-height: 400px; margin: 0 auto; }
-  .steps { gap: 10px; }
+  .steps { display: block; }
+  .step + .step { margin-top: 10px; }
   .step { display: flex; align-items: stretch; }
   .step-side { flex: 0 0 240px; padding: 12px 14px; gap: 6px; }
   .step-side .done { font-size: 12.5px; line-height: 1.35; }
@@ -202,8 +203,7 @@ td.size { font-family: var(--mono); font-weight: 500; color: var(--ink); width: 
   .card .acts li { font-size: 13.5px; }
   /* Seven deliberate pages. No break-inside rules: Chrome mis-renders them on grid cards. */
   section[aria-labelledby="s-steps"], .step:nth-child(3), .step:nth-child(5),
-  section[aria-labelledby="s-size"], section[aria-labelledby="s-after"], .split { break-before: page; }
-  section[aria-labelledby="s-roles"] { margin-top: 12px; }
+  section[aria-labelledby="s-roles"], section[aria-labelledby="s-after"], section[aria-labelledby="s-size"], .split { break-before: page; }
   .key { font-size: 13px; }
 }
 </style>
@@ -466,28 +466,6 @@ td.size { font-family: var(--mono); font-weight: 500; color: var(--ink); width: 
     <p class="rule-line"><b>One accountable owner per step.</b> Never two, never none. The Product Owner for demand, the delivery engineer for delivery.</p>
   </section>
 
-  <section aria-labelledby="s-size">
-    <div class="section-head">
-      <h2 id="s-size">Size sets the support</h2>
-      <p>Every piece of work gets a T-shirt size at intake, confirmed at SG1. The size tells you how much build to expect, how many scenarios the business checks live, and how long hypercare runs.</p>
-    </div>
-    <div class="table-scroll">
-      <table>
-        <thead>
-          <tr><th scope="col">Size</th><th scope="col">RPA build (IA)</th><th scope="col">Power Platform build (SA)</th><th scope="col">Scenarios checked live</th><th scope="col">Hypercare</th></tr>
-        </thead>
-        <tbody>
-          <tr><td class="size">XS</td><td>One process, one system · 5 days or under</td><td>One form or one flow · 3 days or under</td><td>1 to 2</td><td>3 working days</td></tr>
-          <tr><td class="size">S</td><td>One process, one or two systems · 1 to 2 weeks</td><td>App plus a few flows · about 1 week</td><td>3 to 5</td><td>5 working days</td></tr>
-          <tr><td class="size">M</td><td>Two to four systems, exception handling · 3 to 4 weeks</td><td>Multi-screen app over Dataverse · 2 to 3 weeks</td><td>6 to 10</td><td>10 working days</td></tr>
-          <tr><td class="size">L</td><td>Multi-system, queues, orchestration · 6 to 8 weeks</td><td>Multi-app solution with integrations · 5 to 6 weeks</td><td>11 to 20</td><td>15 working days</td></tr>
-          <tr><td class="size">XL</td><td>Multi-process programme · 10 weeks or more</td><td>Enterprise solution across environments · 8 weeks or more</td><td>21 or more</td><td>20 working days</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="foot">Hypercare is a fixed window. First-run checks (FOV) are not: they finish when every scenario has been checked and reconciled, however long that takes. Nothing scales beyond the checked scenarios until then.</p>
-  </section>
-
   <section aria-labelledby="s-after">
     <div class="section-head">
       <h2 id="s-after">After go-live</h2>
@@ -517,6 +495,28 @@ td.size { font-family: var(--mono); font-weight: 500; color: var(--ink); width: 
         <p>Retirement is a planned step on both routes, so the estate stays clean.</p>
       </article>
     </div>
+  </section>
+
+  <section aria-labelledby="s-size">
+    <div class="section-head">
+      <h2 id="s-size">Size sets the support</h2>
+      <p>Every piece of work gets a T-shirt size at intake, confirmed at SG1. The size tells you how much build to expect, how many scenarios the business checks live, and how long hypercare runs.</p>
+    </div>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th scope="col">Size</th><th scope="col">RPA build (IA)</th><th scope="col">Power Platform build (SA)</th><th scope="col">Scenarios checked live</th><th scope="col">Hypercare</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="size">XS</td><td>One process, one system · 5 days or under</td><td>One form or one flow · 3 days or under</td><td>1 to 2</td><td>3 working days</td></tr>
+          <tr><td class="size">S</td><td>One process, one or two systems · 1 to 2 weeks</td><td>App plus a few flows · about 1 week</td><td>3 to 5</td><td>5 working days</td></tr>
+          <tr><td class="size">M</td><td>Two to four systems, exception handling · 3 to 4 weeks</td><td>Multi-screen app over Dataverse · 2 to 3 weeks</td><td>6 to 10</td><td>10 working days</td></tr>
+          <tr><td class="size">L</td><td>Multi-system, queues, orchestration · 6 to 8 weeks</td><td>Multi-app solution with integrations · 5 to 6 weeks</td><td>11 to 20</td><td>15 working days</td></tr>
+          <tr><td class="size">XL</td><td>Multi-process programme · 10 weeks or more</td><td>Enterprise solution across environments · 8 weeks or more</td><td>21 or more</td><td>20 working days</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="foot">Hypercare is a fixed window. First-run checks (FOV) are not: they finish when every scenario has been checked and reconciled, however long that takes. Nothing scales beyond the checked scenarios until then.</p>
   </section>
 
   <div class="split">
