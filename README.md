@@ -34,7 +34,7 @@ An in-app "About" button carries the same guidance.
 people who need the shape rather than the full deck: the five steps with owner and gate, after
 go-live (change and retirement), who does what, sizing, the six rules and the cadence. It is a
 single self-contained file with the CCS fonts inlined, and
-[simple/playbook-on-a-page.pdf](simple/playbook-on-a-page.pdf) is the same page as a seven-page A4
+[simple/playbook-on-a-page.pdf](simple/playbook-on-a-page.pdf) is the same page as a eight-page A4
 landscape PDF for presenting or printing. Edit `playbook-on-a-page.src.html`, run
 `node simple/build.mjs` to regenerate the HTML, then `node simple/pdf.mjs` (needs `playwright`
 resolvable and a Chromium; set `CHROMIUM_PATH` to point at one) to regenerate the PDF. Its content
