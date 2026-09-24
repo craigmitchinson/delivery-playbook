@@ -28,6 +28,15 @@ The argument it makes, slide by slide:
 
 An in-app "About" button carries the same guidance.
 
+## The short version
+
+[simple/playbook-on-a-page.html](simple/playbook-on-a-page.html) is the playbook on one page for
+people who need the shape rather than the full deck: the five steps with owner and gate, after
+go-live (change and retirement), who does what, sizing, the six rules and the cadence. It is a
+single self-contained file with the CCS fonts inlined. Edit `playbook-on-a-page.src.html`, then run
+`node simple/build.mjs` to regenerate it. Its content is written by hand, so update it alongside
+[src/data/playbook.ts](src/data/playbook.ts) when the playbook changes.
+
 ## The eight slides
 
 - **Spine** ([src/components/SpineSlide.tsx](src/components/SpineSlide.tsx)): the hero. The five
