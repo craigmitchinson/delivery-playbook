@@ -248,7 +248,7 @@ td.size { font-family: var(--mono); font-weight: 500; color: var(--ink); width: 
 
           <text class="lane-l" x="20" y="90">PRODUCT OWNER · WHAT THE SQUAD NEEDS FROM YOU</text>
           <rect class="chip-p" x="20" y="98" width="140" height="44" rx="3"/>
-          <text class="chip-t" x="90" y="116" text-anchor="middle">Logs, prioritises, names<tspan x="90" dy="16">the delivery engineer</tspan></text>
+          <text class="chip-t" x="90" y="116" text-anchor="middle">Logs, prioritises, opens<tspan x="90" dy="16">the Teams channel</tspan></text>
           <rect class="chip-p" x="220" y="98" width="140" height="44" rx="3"/>
           <text class="chip-t" x="290" y="116" text-anchor="middle">Owns the requirements,<tspan x="290" dy="16">reports the SG1 result</tspan></text>
           <rect class="chip-p" x="420" y="98" width="140" height="44" rx="3"/>
@@ -292,7 +292,7 @@ td.size { font-family: var(--mono); font-weight: 500; color: var(--ink); width: 
         <g>
           <path class="arrow" d="M160 204 H218" marker-end="url(#ah)"/>
           <text class="note-b" x="190" y="252" text-anchor="middle">IA or SA</text>
-          <text class="note" x="190" y="266" text-anchor="middle">EL decides</text>
+          <text class="note" x="190" y="266" text-anchor="middle">EL decides, assigns</text>
 
           <path class="arrow" d="M360 204 H418" marker-end="url(#ah)"/>
           <path class="gate-d" d="M390 188 L406 204 L390 220 L374 204 Z"/>
@@ -372,8 +372,8 @@ td.size { font-family: var(--mono); font-weight: 500; color: var(--ink); width: 
           <li><span><b>Business</b> raises the demand, with its context, and names an Ops contact.</span><span class="when">Same day</span></li>
           <li><span><b>Product Owner</b> logs it, confirms the outcome and priority, and passes it for routing.</span><span class="when">Within 1 day</span></li>
           <li><span><b>Engineers</b> give current platform capability and squad capacity.</span><span class="when">Before the route is set</span></li>
-          <li><span><b>Engineering Lead</b> decides IA or SA on technical grounds and tells the PO and the business. <b>Engineers</b> set the provisional size and the risk flag.</span><span class="when">Within 2 days</span></li>
-          <li><span><b>Product Owner</b> adds it to the pipeline, names the delivery engineer who will own it, and opens the Teams channel with the pinned post.</span><span class="when">Next daily sync</span></li>
+          <li><span><b>Engineering Lead</b> decides IA or SA on technical grounds, names the delivery engineer who will own it, and tells the PO and the business. <b>Engineers</b> set the provisional size and the risk flag.</span><span class="when">Within 2 days</span></li>
+          <li><span><b>Product Owner</b> adds it to the pipeline and opens the Teams channel with the pinned post.</span><span class="when">Next daily sync</span></li>
         </ol>
       </li>
 
@@ -461,8 +461,8 @@ td.size { font-family: var(--mono); font-weight: 500; color: var(--ink); width: 
     </div>
     <dl class="roles">
       <div class="role"><dt>Business</dt><dd>Raises the need, provides the process map and volumes, grants access and test data. Gives four sign-offs: requirements, UAT, first runs, ownership. Owns and operates the solution once it is live.</dd></div>
-      <div class="role"><dt>Product Owner</dt><dd>Owns demand, value and priority. Accountable for intake and for classifying changes. Names the delivery engineer, owns the Teams channel and every message to the business. First call for scope, priority and business blockers.</dd></div>
-      <div class="role"><dt>Engineering Lead</dt><dd>Owns technology choice. Decides the route and the stack for a problem, settles technical decisions and architecture fit, and unblocks what the squad cannot reach: other tech teams, architecture, platforms. First call for technical blockers. Not accountable for getting work through the gates.</dd></div>
+      <div class="role"><dt>Product Owner</dt><dd>Owns demand, value and priority. Accountable for intake and for classifying changes. Owns the Teams channel and every message to the business. First call for scope, priority and business blockers.</dd></div>
+      <div class="role"><dt>Engineering Lead</dt><dd>Owns technology choice and assignment. Decides the route and the stack for a problem, names the delivery engineer, settles technical decisions and architecture fit, and unblocks what the squad cannot reach: other tech teams, architecture, platforms. First call for technical blockers. Not accountable for getting work through the gates.</dd></div>
       <div class="role"><dt>Engineers</dt><dd>Own the delivery. A named delivery engineer is accountable for each piece of work from assessment to retirement: sizes it, keeps it on track and submits every gate. Senior engineers are expected to know what the platforms can do and to make sound estimates.</dd></div>
       <div class="role coe"><dt>CoE</dt><dd>Decides the gates. Consulted at every gate, never accountable for delivery.</dd></div>
     </dl>
