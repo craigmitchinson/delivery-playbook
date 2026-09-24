@@ -185,6 +185,30 @@ td.size { font-family: var(--mono); font-weight: 500; color: var(--ink); width: 
   .roles { grid-template-columns: 1fr; }
   .lede { font-size: 18px; }
 }
+
+@media print {
+  body { padding-block: 0; padding-inline: 0; font-size: 14.5px; background: #FAF7F2; }
+  .wrap { gap: 24px; max-width: none; }
+  h1 { font-size: 34px; }
+  header { gap: 10px; }
+  .lede { font-size: 15.5px; }
+  .flow { padding: 6px 4px 0; }
+  .flow svg { min-width: 0; max-height: 400px; margin: 0 auto; }
+  .steps { gap: 10px; }
+  .step { display: flex; align-items: stretch; }
+  .step-side { flex: 0 0 240px; padding: 12px 14px; gap: 6px; }
+  .step-side .done { font-size: 12.5px; line-height: 1.35; }
+  .step-side h3 { font-size: 21px; }
+  .step-gate { padding: 5px 8px; font-size: 11.5px; }
+  .acts { flex: 1 1 auto; }
+  .acts li { padding: 5px 0; font-size: 13.5px; }
+  .card .acts li { font-size: 13.5px; }
+  /* Seven deliberate pages. No break-inside rules: Chrome mis-renders them on grid cards. */
+  section[aria-labelledby="s-steps"], .step:nth-child(3), .step:nth-child(5),
+  section[aria-labelledby="s-size"], section[aria-labelledby="s-after"], .split { break-before: page; }
+  section[aria-labelledby="s-roles"] { margin-top: 12px; }
+  .key { font-size: 13px; }
+}
 </style>
 
 <div class="wrap">
@@ -414,7 +438,7 @@ td.size { font-family: var(--mono); font-weight: 500; color: var(--ink); width: 
           <span class="n">STEP 5</span>
           <h3>Go live</h3>
           <p class="owner">Owner: <b>Delivery engineer</b></p>
-          <p class="done"><b>Done when</b> every scenario has passed its first live run, hypercare has run its window with no P1 or P2 open, Ops are trained and own it, and benefit tracking is live.</p>
+          <p class="done"><b>Done when</b> every scenario has passed its first live run, hypercare has run its window with no P1 or P2 open, Ops own it and benefit tracking is live.</p>
           <div class="step-gate">SG4 · Hypercare to BAU</div>
         </div>
         <ol class="acts">
@@ -429,37 +453,6 @@ td.size { font-family: var(--mono); font-weight: 500; color: var(--ink); width: 
         </ol>
       </li>
     </ol>
-  </section>
-
-  <section aria-labelledby="s-after">
-    <div class="section-head">
-      <h2 id="s-after">After go-live</h2>
-      <p>A live solution is only touched through one of these two paths.</p>
-    </div>
-    <div class="pair">
-      <article class="card">
-        <h3>6 · Change to a live solution</h3>
-        <div class="meta"><span>Owner: <b>Product Owner</b></span><span>Gate: <b>SG5 · Enhancement to Live</b>, major only</span></div>
-        <ol class="acts">
-          <li><span><b>Business</b> raises the change, with the driver behind it.</span><span class="when">Same day</span></li>
-          <li><span><b>Engineers</b> give the technical impact, size advice and risk flag. The Engineering Lead weighs in where the change raises a technology or architecture question.</span><span class="when">Within 2 days</span></li>
-          <li><span><b>Product Owner</b> classifies it by size and risk, names the path, and the step it re-enters at: minor goes to Build, major goes to Assess.</span><span class="when">Within 3 days of the request</span></li>
-          <li><span><b>Delivery engineer</b> submits SG5 for a major change, or a CoE consult for any risk-flagged change, whatever its size.</span><span class="when">Before the change moves</span></li>
-        </ol>
-        <p class="callout">A small change to something critical still takes the long route.</p>
-      </article>
-      <article class="card">
-        <h3>7 · Retire a solution</h3>
-        <div class="meta"><span>Owner: <b>Delivery engineer</b></span><span>Gate: <b>CoE decommission sign-off</b></span></div>
-        <ol class="acts">
-          <li><span><b>Business</b> confirms the solution is no longer needed, and why.</span><span class="when">Same day it is flagged</span></li>
-          <li><span><b>Product Owner</b> issues the decommission instruction and the agreed removal date.</span><span class="when">Within 5 days</span></li>
-          <li><span><b>Engineers</b> remove the assets, disable schedules, revoke access and archive the documentation.</span><span class="when">On the removal date</span></li>
-          <li><span><b>Delivery engineer</b> submits the sign-off and updates the estate register.</span><span class="when">At CoE sign-off</span></li>
-        </ol>
-        <p>Retirement is a planned step on both routes, so the estate stays clean.</p>
-      </article>
-    </div>
   </section>
 
   <section aria-labelledby="s-roles">
@@ -496,6 +489,37 @@ td.size { font-family: var(--mono); font-weight: 500; color: var(--ink); width: 
       </table>
     </div>
     <p class="foot">Hypercare is a fixed window. First-run checks (FOV) are not: they finish when every scenario has been checked and reconciled, however long that takes. Nothing scales beyond the checked scenarios until then.</p>
+  </section>
+
+  <section aria-labelledby="s-after">
+    <div class="section-head">
+      <h2 id="s-after">After go-live</h2>
+      <p>A live solution is only touched through one of these two paths.</p>
+    </div>
+    <div class="pair">
+      <article class="card">
+        <h3>6 · Change to a live solution</h3>
+        <div class="meta"><span>Owner: <b>Product Owner</b></span><span>Gate: <b>SG5 · Enhancement to Live</b>, major only</span></div>
+        <ol class="acts">
+          <li><span><b>Business</b> raises the change, with the driver behind it.</span><span class="when">Same day</span></li>
+          <li><span><b>Engineers</b> give the technical impact, size advice and risk flag. The Engineering Lead weighs in where the change raises a technology or architecture question.</span><span class="when">Within 2 days</span></li>
+          <li><span><b>Product Owner</b> classifies it by size and risk, names the path, and the step it re-enters at: minor goes to Build, major goes to Assess.</span><span class="when">Within 3 days of the request</span></li>
+          <li><span><b>Delivery engineer</b> submits SG5 for a major change, or a CoE consult for any risk-flagged change, whatever its size.</span><span class="when">Before the change moves</span></li>
+        </ol>
+        <p class="callout">A small change to something critical still takes the long route.</p>
+      </article>
+      <article class="card">
+        <h3>7 · Retire a solution</h3>
+        <div class="meta"><span>Owner: <b>Delivery engineer</b></span><span>Gate: <b>CoE decommission sign-off</b></span></div>
+        <ol class="acts">
+          <li><span><b>Business</b> confirms the solution is no longer needed, and why.</span><span class="when">Same day it is flagged</span></li>
+          <li><span><b>Product Owner</b> issues the decommission instruction and the agreed removal date.</span><span class="when">Within 5 days</span></li>
+          <li><span><b>Engineers</b> remove the assets, disable schedules, revoke access and archive the documentation.</span><span class="when">On the removal date</span></li>
+          <li><span><b>Delivery engineer</b> submits the sign-off and updates the estate register.</span><span class="when">At CoE sign-off</span></li>
+        </ol>
+        <p>Retirement is a planned step on both routes, so the estate stays clean.</p>
+      </article>
+    </div>
   </section>
 
   <div class="split">
